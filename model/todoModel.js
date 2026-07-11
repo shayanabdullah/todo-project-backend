@@ -20,7 +20,13 @@ const todoModel = Schema({
     type: String,
     enum: ['high', 'medium', 'low'],
     default:'medium',
+  },  
+  category: {
+    type: String,
+    enum: ['work', 'personal', 'other'],
+    default:'other',
   },
+  
   path: {
     type: String,
   },
@@ -29,6 +35,9 @@ const todoModel = Schema({
     }
 
 
+},
+{
+  timestamps: true,
 },
 
 {

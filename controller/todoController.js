@@ -2,7 +2,7 @@ const todoModel = require("../model/todoModel");
 
 const createTodo = async (req, res) => {
 try {
-    const { title, description, priority } = req.body;
+    const { title, description, priority, status, category } = req.body;
   if (!title || !description) {
     return res.send({
       success: false,
@@ -13,6 +13,8 @@ try {
     title: title,
     description: description,
     priority: priority,
+    status: status || 'pending',
+    category: category || 'other',
     path: req.file ? req.file.path : null,
     filetype: req.file ? req.file.mimetype : null,
   });
