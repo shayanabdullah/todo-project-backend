@@ -48,7 +48,13 @@ const editTodo = async (req, res) => {
     message: "todo edited",
   });
 };
+const getAllTasks = async (req, res) => {
+  const todos =  await todoModel.find({});
+  res.send({
+    success: true,
+    todos: todos,
+  });
+}
 
 
-
-module.exports = { createTodo, deleteTodo, editTodo };
+module.exports = { createTodo, deleteTodo, editTodo, getAllTasks };

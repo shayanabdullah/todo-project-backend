@@ -19,8 +19,6 @@ filename: function(req, file, callback){
 const upload = multer({storage: storage});
 
 
-
-
 app.use (express.json());
 app.use(cors());
 
@@ -30,11 +28,10 @@ mongoose.connect('mongodb+srv://shayan:jWdKtfHJ5qoRVAY1@firstclasspractice.4562j
 app.post('/create/task', upload.single('file'), createTodo);
 app.delete('/delete/task/:id', deleteTodo);
 app.post('/edit/task/:id', editTodo);
-app.get('/', (req, res) => {
-    res.send('hello world');
-    console.log(req);
-    
-})
+app.get('/all/tasks', getAllTasks);
+
+
+
 
 
 const PORT = 5000;
