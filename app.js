@@ -32,6 +32,8 @@ app.delete('/delete/task/:id', deleteTodo);
 app.post('/edit/task/:id', editTodo);
 app.get('/', (req, res) => {
     res.send('hello world');
+    console.log(req);
+    
 })
 
 
