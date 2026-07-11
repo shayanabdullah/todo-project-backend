@@ -20,7 +20,8 @@ try {
   });
   
 
-  todo.save();
+ await todo.save();
+ console.log(req.file);
   res.send({
     success: true,
     message: "todo created",
