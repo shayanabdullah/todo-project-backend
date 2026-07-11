@@ -44,11 +44,23 @@ const deleteTodo = async (req, res) => {
 
 
 const editTodo = async (req, res) => {
-  const todo = await todoModel.findByIdAndUpdate(req.params.id, req.body);
-  res.send({
-    success: true,
-    message: "todo edited",
-  });
+  try {
+
+    if(req.file){
+      req.body.path = req.file.path;
+      req.body.filetype = req.file.mimetype;
+    }
+
+await todoModel.findByIdAndUpdate(req.params.id, req.body);
+
+    res.send({
+      success: true,
+      message: "Todo edited",
+    });
+  } catch (error) {
+    console.error(error);
+   
+  }
 };
 const getAllTasks = async (req, res) => {
   const todos =  await todoModel.find({});

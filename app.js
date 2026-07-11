@@ -27,8 +27,8 @@ mongoose.connect('mongodb+srv://shayan:jWdKtfHJ5qoRVAY1@firstclasspractice.4562j
 // routes
 app.post('/create/task', upload.single('file'), createTodo);
 app.delete('/delete/task/:id', deleteTodo);
-app.post('/edit/task/:id', editTodo);
-app.get('/all/tasks', getAllTasks);
+app.post('/edit/task/:id',upload.single("file"), editTodo);
+app.get('/all/tasks',  getAllTasks);
 
 
 
