@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const app = express();
 const cors = require('cors');
 const multer  = require('multer');
-const { createTodo, editTodo, deleteTodo } = require('./controller/todoController');
+const { createTodo, editTodo, deleteTodo, getAllTasks } = require('./controller/todoController');
 
 const storage = multer.diskStorage({
 destination: function(req, file, callback){
