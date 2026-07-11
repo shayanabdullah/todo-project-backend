@@ -12,7 +12,7 @@ destination: function(req, file, callback){
 
 filename: function(req, file, callback){
     const unique = 'file' + '-' + Date.now() + '-' + file.originalname;
-    callback(null, unique) 
+    callback(null, unique.trim()) 
 }
 })
 
