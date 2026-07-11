@@ -21,14 +21,14 @@ const upload = multer({storage: storage});
 
 app.use (express.json());
 app.use(cors());
-
+app.use("/uploads", express.static("uploads"));
 mongoose.connect('mongodb+srv://shayan:jWdKtfHJ5qoRVAY1@firstclasspractice.4562jwp.mongodb.net/exam?appName=FirstClassPractice').then(() => console.log('DataBase Connected')).catch((err) => console.log(err))
 
 // routes
 app.post('/create/task', upload.single('file'), createTodo);
 app.delete('/delete/task/:id', deleteTodo);
 app.post('/edit/task/:id',upload.single("file"), editTodo);
-app.get('/all/tasks',  getAllTasks);
+app.get('/all/tasks', getAllTasks);
 
 
 
