@@ -1,8 +1,7 @@
 const express = require("express");
-const mongoose = require("mongoose");
+const dbConncetion = require("./config/databaseConfig");
 const app = express();
 const cors = require("cors");
-const multer = require("multer");
 const {
   createTodo,
   editTodo,
@@ -10,30 +9,14 @@ const {
   getAllTasks,
 } = require("./controller/todoController");
 
-const storage = multer.diskStorage({
-  destination: function (req, file, callback) {
-    callback(null, "./uploads");
-  },
+const upload = require("./config/uploadConfing");
 
-  filename: function (req, file, callback) {
-    const unique =
-      "file-" + Date.now() + "-" + file.originalname.replace(/\s+/g, "-");
 
-    callback(null, unique);
-  },
-});
-
-const upload = multer({ storage: storage });
 
 app.use(express.json());
 app.use(cors());
 app.use("/uploads", express.static("uploads"));
-mongoose
-  .connect(
-    "mongodb+srv://shayan:jWdKtfHJ5qoRVAY1@firstclasspractice.4562jwp.mongodb.net/exam?appName=FirstClassPractice",
-  )
-  .then(() => console.log("DataBase Connected"))
-  .catch((err) => console.log(err));
+dbConncetion();
 
 // routes
 app.post("/create/task", upload.single("file"), createTodo);
